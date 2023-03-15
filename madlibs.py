@@ -47,7 +47,7 @@ def greet_person():
     player = request.args.get("person")
 
     compliments = sample(AWESOMENESS, 3)
-    print(compliments)
+    
     return render_template("compliment.html", person=player, compliments=compliments)
 
 @app.route("/game", methods=["POST"])
@@ -64,11 +64,13 @@ def show_madlib_form():
 def show_madlib():
     person = request.args.get("person")
     color = request.args.getlist("color")
-    print("*" * 80)
-    print(color)
     noun = request.args.get("noun")
     adjective = request.args.get("adjective")
-    return render_template("madlib.html", person=person, color=color, noun=noun, adjective=adjective)
+
+    madlib_options = ["madlib1.html", "madlib2.html", "madlib3.html"]
+    madlib = choice(madlib_options)
+
+    return render_template(madlib, person=person, color=color, noun=noun, adjective=adjective)
 
 
 if __name__ == "__main__":
