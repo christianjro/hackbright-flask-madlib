@@ -50,9 +50,10 @@ def greet_person():
     print(compliments)
     return render_template("compliment.html", person=player, compliments=compliments)
 
-@app.route("/game")
+@app.route("/game", methods=["POST"])
 def show_madlib_form():
-    choice = request.args.get("choice")
+    # choice = request.args.get("choice")
+    choice = request.form.get("choice")
 
     if choice == "yes":
         return render_template("game.html")
