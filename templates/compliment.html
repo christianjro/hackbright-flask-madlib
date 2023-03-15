@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>A Compliment</title>
+</head>
+<body>
+    Hi {{ person }}! I think you're 
+    {% for item in compliments[:-1] %}
+      {{ item }} 
+    {% endfor %}
+    and {{ compliments[-1] }}!
+    
+    <br/>
+    <label for="game">Do you want to play a Game?</label>
+    <form action="/game" name="game">
+        <label for="name">Yes</label>
+        <input type="radio" name="choice" value="yes">
+
+        <label for="name">No</label>
+        <input type="radio" name="choice" value="no">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
